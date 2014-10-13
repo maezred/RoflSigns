@@ -24,23 +24,23 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockBreakEventLowestHandler(final BlockBreakEvent event) {
-		if (!event.getPlayer().getName().equals("roflcopterss99")) {
-			return;
-		}
-
 		if (event.getBlock().getType() == Material.SIGN_POST) {
+			if (!event.getPlayer().getName().equals("roflcopterss99")) {
+				return;
+			}
+
 			event.setCancelled(true);
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void BlockBreakEventHighestHandler(final BlockBreakEvent event) {
-		if (!event.getPlayer().getName().equals("roflcopterss99")) {
-			return;
-		}
-
 		if (event.isCancelled()) {
 			if (event.getBlock().getType() == Material.SIGN_POST) {
+				if (!event.getPlayer().getName().equals("roflcopterss99")) {
+					return;
+				}
+
 				event.setCancelled(false);
 			}
 		}
@@ -48,23 +48,23 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockPlaceEventLowestHandler(final BlockPlaceEvent event) {
-		if (!event.getPlayer().getName().equals("roflcopterss99")) {
-			return;
-		}
-
 		if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
+			if (!event.getPlayer().getName().equals("roflcopterss99")) {
+				return;
+			}
+
 			event.setCancelled(true);
 		}
 	}
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void BlockPlaceEventHighestHandler(final BlockPlaceEvent event) {
-		if (!event.getPlayer().getName().equals("roflcopterss99")) {
-			return;
-		}
-
 		if (event.isCancelled()) {
 			if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
+				if (!event.getPlayer().getName().equals("roflcopterss99")) {
+					return;
+				}
+
 				final ItemStack item = event.getItemInHand();
 
 				if (item.getType() == Material.SIGN && item.getAmount() < 2) {
@@ -87,11 +87,11 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void SignChangeEventHighestHandler(final SignChangeEvent event) {
-		if (!event.getPlayer().getName().equals("roflcopterss99")) {
-			return;
-		}
-
 		if (event.isCancelled()) {
+			if (!event.getPlayer().getName().equals("roflcopterss99")) {
+				return;
+			}
+
 			event.setCancelled(false);
 		}
 	}
