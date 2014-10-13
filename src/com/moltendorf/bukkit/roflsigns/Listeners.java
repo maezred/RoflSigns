@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Listener register.
@@ -64,6 +65,12 @@ public class Listeners implements Listener {
 
 		if (event.isCancelled()) {
 			if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
+				final ItemStack item = event.getItemInHand();
+
+				if (item.getType() == Material.SIGN && item.getAmount() < 2) {
+					item.setAmount(2);
+				}
+
 				event.setCancelled(false);
 			}
 		}
