@@ -4,6 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
 
@@ -18,6 +19,30 @@ public class Listeners implements Listener {
 
 	protected Listeners(final Plugin instance) {
 		plugin = instance;
+	}
+
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void BlockBreakEventLowestHandler(final BlockBreakEvent event) {
+		if (!event.getPlayer().getName().equals("roflcopterss99")) {
+			return;
+		}
+
+		if (event.getBlock().getType() == Material.SIGN_POST) {
+			event.setCancelled(true);
+		}
+	}
+
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void BlockBreakEventHighestHandler(final BlockBreakEvent event) {
+		if (!event.getPlayer().getName().equals("roflcopterss99")) {
+			return;
+		}
+
+		if (event.isCancelled()) {
+			if (event.getBlock().getType() == Material.SIGN_POST) {
+				event.setCancelled(false);
+			}
+		}
 	}
 
 	@EventHandler(priority = EventPriority.LOWEST)
