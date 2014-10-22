@@ -25,7 +25,7 @@ public class Listeners implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockBreakEventLowestHandler(final BlockBreakEvent event) {
 		if (event.getBlock().getType() == Material.SIGN_POST) {
-			if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+			if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 				return;
 			}
 
@@ -37,7 +37,7 @@ public class Listeners implements Listener {
 	public void BlockBreakEventHighestHandler(final BlockBreakEvent event) {
 		if (event.isCancelled()) {
 			if (event.getBlock().getType() == Material.SIGN_POST) {
-				if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+				if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 					return;
 				}
 
@@ -49,7 +49,7 @@ public class Listeners implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockPlaceEventLowestHandler(final BlockPlaceEvent event) {
 		if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
-			if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+			if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 				return;
 			}
 
@@ -61,7 +61,7 @@ public class Listeners implements Listener {
 	public void BlockPlaceEventHighestHandler(final BlockPlaceEvent event) {
 		if (event.isCancelled()) {
 			if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
-				if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+				if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 					return;
 				}
 
@@ -78,7 +78,7 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void SignChangeEventLowestHandler(final SignChangeEvent event) {
-		if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+		if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 			return;
 		}
 
@@ -88,7 +88,7 @@ public class Listeners implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void SignChangeEventHighestHandler(final SignChangeEvent event) {
 		if (event.isCancelled()) {
-			if (!plugin.configuration.global.player.equals(event.getPlayer().getUniqueId())) {
+			if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 				return;
 			}
 
