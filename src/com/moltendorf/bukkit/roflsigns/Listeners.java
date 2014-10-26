@@ -1,6 +1,5 @@
 package com.moltendorf.bukkit.roflsigns;
 
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -24,7 +23,7 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockBreakEventLowestHandler(final BlockBreakEvent event) {
-		if (event.getBlock().getType() == Material.SIGN_POST) {
+		if (plugin.configuration.global.blocks.contains(event.getBlock().getType())) {
 			if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 				return;
 			}
@@ -36,7 +35,7 @@ public class Listeners implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void BlockBreakEventHighestHandler(final BlockBreakEvent event) {
 		if (event.isCancelled()) {
-			if (event.getBlock().getType() == Material.SIGN_POST) {
+			if (plugin.configuration.global.blocks.contains(event.getBlock().getType())) {
 				if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 					return;
 				}
@@ -48,7 +47,7 @@ public class Listeners implements Listener {
 
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void BlockPlaceEventLowestHandler(final BlockPlaceEvent event) {
-		if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
+		if (plugin.configuration.global.blocks.contains(event.getBlockPlaced().getType())) {
 			if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 				return;
 			}
@@ -60,14 +59,14 @@ public class Listeners implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void BlockPlaceEventHighestHandler(final BlockPlaceEvent event) {
 		if (event.isCancelled()) {
-			if (event.getBlockPlaced().getType() == Material.SIGN_POST) {
+			if (plugin.configuration.global.blocks.contains(event.getBlockPlaced().getType())) {
 				if (!plugin.configuration.global.players.contains(event.getPlayer().getUniqueId())) {
 					return;
 				}
 
 				final ItemStack item = event.getItemInHand();
 
-				if (item.getType() == Material.SIGN && item.getAmount() < 2) {
+				if (plugin.configuration.global.items.contains(item.getType()) && item.getAmount() < 2) {
 					item.setAmount(2);
 				}
 

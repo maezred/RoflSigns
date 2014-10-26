@@ -1,5 +1,7 @@
 package com.moltendorf.bukkit.roflsigns;
 
+import org.bukkit.Material;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +18,15 @@ public class Configuration {
 
 		// Final data.
 		final protected boolean enabled = true; // Whether or not the plugin is enabled at all; useful for using it as an interface (default is true).
+
+		final protected Set<Material> blocks = new HashSet<>(Arrays.asList(
+			Material.SIGN_POST,
+			Material.WALL_SIGN
+		));
+
+		final protected Set<Material> items = new HashSet<>(Arrays.asList(
+			Material.SIGN
+		));
 
 		final protected Set<UUID> players = new HashSet<>(Arrays.asList(
 			UUID.fromString("89554931-504c-46b4-9809-63cee1436d14"),    // roflcopterss99
